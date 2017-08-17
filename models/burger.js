@@ -2,20 +2,23 @@ module.exports = function(sequelize, DataTypes) {
     var Burger = sequelize.define("Burger", {
         burger_name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+              len: [1]
+            }
         },
         devoured: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
-    }, {
-        paranoid: true,
-        tableName: "burgers",
-        classMethods: {
-            associate: function(models) {
-                Burger.belongsTo(models.Customer);
-            }
-        }
     });
     return Burger;
 };
+
+// db.Burger.create( {
+//   burger_name: "Bacon Burger",
+//   devoured: false  
+// })
+// .then(function (dbBurger) {
+//   console.log(dbBurger);
+// });
