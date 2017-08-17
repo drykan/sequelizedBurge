@@ -9,12 +9,15 @@
   "test": {
     "username": "root",
     "password": "",
-    "database": "database_test",
+    "database": "burger2",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "use_env_variable": "mysql://n5mtg5x131546wdd:dd2pj2tkxf94wr3k@cdm1s48crk8itlnr.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/m8dxjl5r182c0dmm",
+    "username": "n5mtg5x131546wdd",
+    "password": "dd2pj2tkxf94wr3k",
+    "database": "m8dxjl5r182c0dmm",
     "dialect": "mysql"
   }
 }

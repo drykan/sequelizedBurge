@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
-var burger = require('../models/burger.js');
+var db = require("../models");
+// var burger = require('../models/burger.js');
 
 router.get('/', function (req, res) {
   db.Burger.findAll({}).then(function (data) {
@@ -11,21 +11,19 @@ router.get('/', function (req, res) {
   });
 });
 
-router.post("/burgers/insertOne", function (req, res) {
-  var updateBurger = req.body;
+router.post("/burgers", function (req, res) {
   db.Burger.create({
-    burger_name: updateBurger.burger_name,
+    burger_name: req.body.name,
     devoured: false
   }).then(function (data) {
     res.redirect("/");
   });
 });
 
-router.put("/burgers/updateOne/:id", function (req, res) {
-  var newBurger = req.body;
+router.put("/burgers/:id", function (req, res) {
   db.Burger.update(
     {
-      devoured: newBurger.devoured
+      devoured: req.body.devoured
     },
     {
       where: { id: req.params.id }
@@ -34,9 +32,6 @@ router.put("/burgers/updateOne/:id", function (req, res) {
     });
 });
 
-router.route("/api").get(function (req, res) {
-  db.Burger.findAll({}).then(function (data) {
-    res.json(data)
-  });
-});
+
 // Export routes for server.js to use.
+module.exports = router;

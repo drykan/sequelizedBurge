@@ -28,7 +28,7 @@ app.use("/", routes);
 
 // Sequelize connection
 db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-        console.log("Listening on PORT " + PORT);
+    app.listen(port, function() {
+        console.log("Listening on PORT " + port);
     });
 });
